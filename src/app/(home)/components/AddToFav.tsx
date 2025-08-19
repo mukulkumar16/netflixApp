@@ -1,4 +1,4 @@
-//@ts-nocheck
+// @ts-nocheck
 'use client'
 
 import { useEffect, useState } from "react";
@@ -15,9 +15,7 @@ export default function AddToFav({ item }) {
 
   function hancdleclick() {
     setadded(true);
-
     let name = JSON.parse(localStorage.getItem('fav') || '[]');
-
     const previtem = name.find(elem => elem.id === item.imdbID);
 
     if (previtem) {
@@ -35,11 +33,15 @@ export default function AddToFav({ item }) {
   }
 
   return (
-    <div>
-      <button onClick={hancdleclick}>
+    <div className="flex justify-center">
+      <button
+        onClick={hancdleclick}
+        className={`px-4 py-2 rounded-lg text-white font-semibold transition duration-300 
+          ${added ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'}
+          text-sm sm:text-base`}
+      >
         {added ? "Fav" : "Add to Fav"}
       </button>
     </div>
   );
 }
-
