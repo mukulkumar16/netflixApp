@@ -19,7 +19,7 @@ export default async function page() {
       />
 
       <div className="absolute inset-0 bg-black/70 z-10 flex flex-col items-center justify-center text-white px-4 py-8">
-        {/* Logo & Login */}
+       
         <div className="absolute top-4 left-4">
           <img
             src="https://img.icons8.com/?size=100&id=20519&format=png&color=000000"
@@ -34,7 +34,6 @@ export default async function page() {
           </button>
         </Link>
 
-        {/* Text Content */}
         <div className="max-w-3xl text-center">
           <h1 className="text-3xl md:text-5xl font-extrabold mb-4">
             Unlimited movies, TV Shows and more
@@ -45,7 +44,7 @@ export default async function page() {
           </p>
         </div>
 
-        {/* Email Form */}
+      
         <form action={handleEmail} className="w-full max-w-xl mt-8 px-4">
           <div className="flex flex-col sm:flex-row gap-4">
             <input
