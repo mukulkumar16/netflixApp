@@ -1,21 +1,13 @@
-
-
-
-
 //@ts-nocheck
 'use server'
 
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-
-
-
 export async function handleSubmit(obj) {
   const { name, email, password } = obj;
-
-
     const usercookies = cookies();
-    usercookies.set('user', `${name}`);
+    await usercookies.set('user', `${email}`);
+    await usercookies.set('email', `${email}`);
     // console.log("Login successful");
     
 
@@ -31,7 +23,12 @@ export async function handleSubmit(obj) {
 export async function handleEmail(formData) {
   const email = formData.get('email');
   const usercookies = cookies();
-  usercookies.set('email', email);
+  const useremail = (await usercookies).get('user');
+  
+  if(useremail?.value !== email){
+    redirect('/form');
+  }
+  await usercookies.set('email', email);
   redirect('/searchresult');
 
 }

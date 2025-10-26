@@ -1,80 +1,80 @@
 //@ts-nocheck
-
 import Card from "../components/Card";
+import Carousel from "../components/Carousel";
 
- async function getfetch(type) {
+async function getfetch(type) {
+  const res = await fetch(`https://www.omdbapi.com/?apikey=985d4a31&s=${type}`);
+  const data = await res.json();
+  return data.Search || [];
+}
 
-        const res = await fetch(`https://www.omdbapi.com/?apikey=985d4a31&s=${type}`);
-        const data = await res.json();
-        const search = data.Search;
-        return search;
-        
-    }
+// Utility function → Random 4 movies pick karega
+function getRandomMovies(list, count = 5) {
+  if (!list || list.length === 0) return [];
+  const shuffled = [...list].sort(() => Math.random() - 0.5); // shuffle
+  return shuffled.slice(0, count);
+}
 
-export default async function page(){
-   
+export default async function page() {
+  const trending = await getfetch("hindi");
+  const anime = await getfetch("Anime");
+  const love = await getfetch("love");
+  const family = await getfetch("family");
+  const shinchan = await getfetch("Shinchan");
+  const english = await getfetch("english");
+  const new1 = await getfetch("new");
 
-    const trending = await getfetch("hindi");
-    const anime = await getfetch("Anime");
-    const love =  await getfetch("love");
-    const family = await getfetch("family");
-    const shinchan = await getfetch("Shinchan");
-    const english = await getfetch("english");
+  return (
+    <div className="bg-gray-900 p-4">
+      <Carousel trending={love} />
 
+      {/* Hindi Section */}
+      <h1 className="bg-gray-900 mt-5 font-bold text-2xl text-amber-50 ml-5">Hindi Movies</h1>
+      <div className="flex flex-wrap p-3 bg-gray-900 gap-9 justify-center items-center">
+        {getRandomMovies(trending).map((item) => (
+          <Card key={item.imdbID} item={item} />
+        ))}
+      </div>
 
-   
-    return(
-        <div className="bg-gray-900">
-        <h1 className="bg-gray-900 font-bold text-2xl text-amber-50 ml-5">Hindi Movies</h1>
- 
-       <div className="flex flex-wrap p-3 bg-gray-900 gap-9 justify-center items-center">
+      {/* Love Section */}
+      <h1 className="bg-gray-900 font-bold text-2xl text-amber-50 ml-5">Love</h1>
+      <div className="flex flex-wrap p-3 bg-gray-900 gap-9 justify-center items-center">
+        {getRandomMovies(love).map((item) => (
+          <Card key={item.imdbID} item={item} />
+        ))}
+      </div>
 
-            {   trending.slice(0,4).map(function(item){
-             return <Card key={item.imdbID} item={item}/>
-            })}
-        </div>
-         <h1 className="bg-gray-900 font-bold text-2xl text-amber-50 ml-5">Love</h1>
- 
-       <div className="flex flex-wrap p-3 bg-gray-900 gap-9 justify-center items-center">
+      {/* English Section */}
+      <h1 className="bg-gray-900 font-bold text-2xl text-amber-50 ml-5">English Movies</h1>
+      <div className="flex flex-wrap p-3 bg-gray-900 gap-9 justify-center items-center">
+        {getRandomMovies(english).map((item) => (
+          <Card key={item.imdbID} item={item} />
+        ))}
+      </div>
 
-            {   love.slice(0,4).map(function(item){
-             return <Card key={item.imdbID} item={item}/>
-            })}
-        </div>
-         <h1 className="bg-gray-900 font-bold text-2xl text-amber-50 ml-5">English Movies</h1>
- 
-       <div className="flex flex-wrap p-3 bg-gray-900 gap-9 justify-center items-center">
+      {/* Anime Section */}
+      <h1 className="bg-gray-900 font-bold text-2xl text-amber-50 ml-5">Anime</h1>
+      <div className="flex flex-wrap p-3 bg-gray-900 gap-9 justify-center items-center">
+        {getRandomMovies(anime).map((item) => (
+          <Card key={item.imdbID} item={item} />
+        ))}
+      </div>
 
-            {   english.slice(0,4).map(function(item){
-             return <Card key={item.imdbID} item={item}/>
-            })}
-        </div>
-            <h1 className="bg-gray-900 font-bold text-2xl text-amber-50 ml-5">Anime</h1>
- 
-       <div className="flex flex-wrap p-3 bg-gray-900 gap-9 justify-center items-center">
+      {/* Family Section */}
+      <h1 className="bg-gray-900 font-bold text-2xl text-amber-50 ml-5">Family Movies</h1>
+      <div className="flex flex-wrap p-3 bg-gray-900 gap-9 justify-center items-center">
+        {getRandomMovies(family).map((item) => (
+          <Card key={item.imdbID} item={item} />
+        ))}
+      </div>
 
-            {   anime.slice(0,4).map(function(item){
-             return <Card key={item.imdbID} item={item}/>
-            })}
-        </div>
-          <h1 className="bg-gray-900 font-bold text-2xl text-amber-50 ml-5">Family Movies</h1>
- 
-       <div className="flex flex-wrap p-3 bg-gray-900 gap-9 justify-center items-center">
-
-            {   family.slice(0,4).map(function(item){
-             return <Card key={item.imdbID} item={item}/>
-            })}
-        </div>
-         <h1 className="bg-gray-900 font-bold text-2xl text-amber-50 ml-5">Shinchan</h1>
- 
-       <div className="flex flex-wrap p-3 bg-gray-900 gap-9 justify-center items-center">
-
-            {   shinchan.slice(0,4).map(function(item){
-             return <Card key={item.imdbID} item={item}/>
-            })}
-        </div>
-            
-           
-        </div>
-    )
+      {/* Shinchan Section */}
+      <h1 className="bg-gray-900 font-bold text-2xl text-amber-50 ml-5">Shinchan</h1>
+      <div className="flex flex-wrap p-3 bg-gray-900 gap-9 justify-center items-center">
+        {getRandomMovies(shinchan).map((item) => (
+          <Card key={item.imdbID} item={item} />
+        ))}
+      </div>
+    </div>
+  );
 }

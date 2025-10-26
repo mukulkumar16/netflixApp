@@ -35,10 +35,10 @@ export default function AddToFav({ item }) {
   }
 
   return (
-    <div>
+    
       <button onClick={hancdleclick}>
         {added ? "Fav" : "Add to Fav"}
       </button>
-    </div>
+   
   );
 }

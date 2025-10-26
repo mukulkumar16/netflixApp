@@ -29,7 +29,7 @@ export default function FavoritesPage() {
   return (
     <div className="bg-gray-900 min-h-screen w-full p-6">
   {favorites.length === 0 ? (
-    <div className="flex flex-col justify-center items-center h-full">
+    <div className="flex mt-[200px] flex-col justify-center items-center h-full">
       <h1 className="text-white text-2xl text-center font-semibold">
         Your favorites list is empty
         <br />

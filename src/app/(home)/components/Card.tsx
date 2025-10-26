@@ -5,32 +5,32 @@ import Link from "next/link";
 export default function Card({ item }) {
   return (
     <Link href={`/movie/${item.imdbID}`} className="group block">
-      <div className="w-full max-w-[300px] mx-auto h-[460px] rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-2 border border-gray-200">
+      <div className="relative w-[220px] h-[330px] mx-auto rounded-xl overflow-hidden bg-gray-900 shadow-md hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+        
+        {/* Poster */}
+        {item.Poster !== "N/A" ? (
+          <Image
+            src={item.Poster}
+            alt={item.Title}
+            fill
+            priority
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+        ) : (
+          <div className="flex items-center justify-center w-full h-full bg-gray-800 text-gray-400">
+            <span className="text-sm">No Image</span>
+          </div>
+        )}
 
-      
-        <div className="relative h-[380px] w-full bg-gray-100 flex items-center justify-center">
-          {item.Poster !== "N/A" ? (
-            <Image
-              src={item.Poster}
-              alt={item.Title}
-              width={300}
-              height={380}
-              className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-            />
-          ) : (
-            <div className="text-gray-500 text-center p-4">
-              <span className="text-sm">No Image Available</span>
-            </div>
-          )}
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
 
- 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
-        </div>
-
-     
-        <div className="p-4 z-20 relative bg-white">
-          <h2 className="text-md font-semibold text-gray-800 truncate">{item.Title}</h2>
-          <p className="text-xs text-gray-500 mt-1">Year: {item.Year}</p>
+        {/* Title + Year */}
+        <div className="absolute bottom-0 left-0 right-0 p-3 z-20">
+          <h2 className="text-sm sm:text-base font-bold text-white truncate">
+            {item.Title}
+          </h2>
+          <p className="text-xs text-gray-300">Year: {item.Year}</p>
         </div>
       </div>
     </Link>

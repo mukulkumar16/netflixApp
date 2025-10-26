@@ -11,6 +11,7 @@ export default function FormValidation() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState({});
+    const [cnfpassword, setcnfpassword] = useState("");
     const [msg , setmsg ] = useState("");
 
     async function validateSubmit(event) {
@@ -27,6 +28,9 @@ export default function FormValidation() {
 
         if (password.length < 6){
             errorObj.password = "Password length should be minimum of 6";
+        }
+        if (password !== cnfpassword) {
+            errorObj.password = "Passwords do not match";
         }
 
         setError(errorObj);
@@ -58,9 +62,23 @@ export default function FormValidation() {
                 onSubmit={validateSubmit}
                 className="bg-gray-950 shadow-xl rounded-2xl p-8 w-full max-w-md space-y-6"
             >
-                <h2 className="text-2xl font-bold text-gray-100">Log-in </h2>
+                <h2 className="text-2xl font-bold text-gray-100">Sign-Up</h2>
 
-               
+                <div>
+                    <label className="block mb-1 text-sm font-semibold text-gray-600">
+                        Name
+                    </label>
+                    <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Enter your name"
+                        className="w-full px-4 py-2 border rounded-xl text-amber-50 focus:outline-none focus:ring-2 focus:ring-red-500"
+                    />
+                    {error.name && (
+                        <p className="text-red-500 text-sm mt-1">{error.name}</p>
+                    )}
+                </div>
 
                 <div>
                     <label className="block mb-1 text-sm font-semibold text-gray-600">
@@ -92,6 +110,22 @@ export default function FormValidation() {
                         <p className="text-red-500 text-sm mt-1">{error.password}</p>
                     )}
                 </div>
+                <div>
+                    <label className="block mb-1 text-sm font-semibold text-gray-600">
+                        Confirm Password
+                    </label>    
+                    <input
+                        type="password"
+                        value={cnfpassword}
+                        onChange={(e) => setcnfpassword(e.target.value)}
+                        placeholder="confirm password"
+                        className="w-full px-4 py-2 text-amber-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500"
+                    />
+                    {error.password && (
+                        <p className="text-red-500 text-sm mt-1">{error.password}</p>
+                    )}
+                </div>
+                
 
                 <button
                     type="submit"
@@ -99,11 +133,8 @@ export default function FormValidation() {
                 >
                     Submit
                 </button>
-                <div>
-                    <Link href={'/signup'}> <p className="text-m text-center mt-0 text-amber-50">Don't  have an account </p> </Link>
-                </div>
                  {
-                msg && <p className="flex justify-center items-center text-amber-50 font-bold">{msg}</p>
+                msg && <p className="flex justify-center items-center text-amber-50 font-bold">Sign-up successfull !! </p>
             }
             </form>
            
