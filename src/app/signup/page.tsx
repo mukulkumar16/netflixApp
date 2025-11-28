@@ -57,7 +57,9 @@ export default function FormValidation() {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-900 px-4">
-            <Link href={"/"}><div className="fixed mt-0 left-6  top-0"><img src="https://img.icons8.com/?size=100&id=20519&format=png&color=000000" alt="" /></div> </Link>
+            <Link href={"/"}><div className="fixed mt-2 left-6  top-0"><h1 className="text-3xl font-extrabold text-red-500 tracking-wide drop-shadow-[0_0_10px_rgba(255,0,0,0.7)]">
+  CineCrush
+</h1></div> </Link>
             <form
                 onSubmit={validateSubmit}
                 className="bg-gray-950 shadow-xl rounded-2xl p-8 w-full max-w-md space-y-6"

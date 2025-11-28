@@ -9,7 +9,7 @@ async function getfetch(type) {
 }
 
 // Utility function → Random 4 movies pick karega
-function getRandomMovies(list, count = 5) {
+function getRandomMovies(list, count = 4) {
   if (!list || list.length === 0) return [];
   const shuffled = [...list].sort(() => Math.random() - 0.5); // shuffle
   return shuffled.slice(0, count);

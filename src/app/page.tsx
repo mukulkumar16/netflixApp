@@ -25,11 +25,10 @@ export default async function Page() {
       <div className="absolute inset-0 bg-black/70 flex flex-col items-center text-white text-center px-4 md:px-12">
         {/* Navbar */}
         <div className="w-full flex justify-between items-center py-5 px-3 md:px-10 fixed top-0 left-0 bg-gradient-to-b from-black/80 to-transparent z-50">
-          <img
-            src="https://img.icons8.com/?size=100&id=20519&format=png&color=FF0000"
-            alt="Netflix Logo"
-            className="w-20 md:w-28"
-          />
+         <h1 className="text-3xl font-extrabold text-red-500 tracking-wide drop-shadow-[0_0_10px_rgba(255,0,0,0.7)]">
+  CineCrush
+</h1>
+
           <Link href={"/form"}>
             <button className="bg-red-600 hover:bg-red-700 text-white font-semibold px-5 py-2 md:px-6 md:py-3 rounded-md text-[16px] shadow-lg">
               Log In

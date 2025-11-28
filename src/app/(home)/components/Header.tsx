@@ -9,11 +9,9 @@ export default function Header() {
         {/* Logo */}
         <h1 className="text-2xl font-bold text-red-600">
           <Link href="/searchresult">
-            <img
-              src="https://img.icons8.com/?size=100&id=20519&format=png&color=000000"
-              alt="logo"
-              className="w-12 h-12"
-            />
+            <h1 className="text-3xl font-extrabold text-red-500 tracking-wide drop-shadow-[0_0_10px_rgba(255,0,0,0.7)]">
+              CineCrush
+            </h1>
           </Link>
         </h1>
 
